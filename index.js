@@ -2,7 +2,7 @@ const Flow = require('flow-platform-sdk');
 
 /*
  * 
- * The class impplements if-else logic
+ * The class implements if-else logic
  *  
  */
 
