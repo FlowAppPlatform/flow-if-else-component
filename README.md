@@ -14,7 +14,7 @@ npm install flow-if-else-component --save
 const Component = require('flow-if-else-component');
 
 // create instance of the component
-const component = new Component.Charge();
+const component = new Component();
 ```
 
 *Provide the Code property*
