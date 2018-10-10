@@ -53,12 +53,16 @@ component.execute();
 let code = {
   condition : false,
   if        : function () { a++; },
-  else      : { condition: true: if: function () { a--; } }
+  else      : {
+    condition : true,
+    if        : function () { a--; },
+    else      : function () { a = 4; }
+  }
 };
 // the above is equivalent to
 if (code.condition) { a++; }
 else if (code.else.condition) { a--; }
-else {/* nothing done */}
+else { a = 4; }
 ```
 
 #### Conclusion
