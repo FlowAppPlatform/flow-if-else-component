@@ -40,12 +40,25 @@ component.getPort('Error').onEmit(function(){
   // an error occured
   // the actual error can be accessed through the 'Data' property of the port
   let err = component.getPort('Error').getProperty('Data').data;
-  // a = 0 here
 });
 
 
 // mandatory to execute the component
 component.execute();
+```
+
+*The Code property explained*
+
+```javascript
+let code = {
+  condition : false,
+  if        : function () { a++; },
+  else      : { condition: true: if: function () { a--; } }
+};
+// the above is equivalent to
+if (code.condition) { a++; }
+else if (code.else.condition) { a--; }
+else {/* nothing done */}
 ```
 
 #### Conclusion
