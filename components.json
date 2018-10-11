@@ -21,8 +21,8 @@
             "properties": [
               {
                 "id": "Data",
-                "name": "Response",
-                "type": "Text",
+                "name": "Result",
+                "type": "text",
                 "data": null,
                 "options": { "required": true }
               }
