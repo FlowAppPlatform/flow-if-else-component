@@ -26,11 +26,11 @@ component.getProperty('Expression').data = 'q=1';
 
 *That's all, now listen in for port emit events*
 ```javascript
-component.getPort('True').onEmit(function(){
+component.getPort('True').onEmit(function() {
   // the expression evaluated to true
 });
 
-component.getPort('False').onEmit(function(){
+component.getPort('False').onEmit(function() {
   // the expression evaluated to false
 });
 
