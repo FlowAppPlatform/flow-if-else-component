@@ -25,8 +25,13 @@ class Component extends Flow.Component {
 
     this.attachTask(function () {
 
-      const value = eval(this.getProperty('Expression').data);
+      let value = false;
 
+      // expression could throw an error when evaluated
+      try {
+        value = eval(this.getProperty('Expression').data);
+      } catch(e) {/* ignore, value remains false anyway */}
+      
       const port = this.getPort(value ? 'True' : 'False');
       port.emit();
 

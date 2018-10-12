@@ -2,17 +2,16 @@
  * Tests
  */
 
-const assert = require('assert');
 const Component = require('./index');
-const component = new Component();
+let component = new Component();
 
 describe(`Component Tests
 `, function () {
   it('Component should have required properties and ports', function (done) {
     try {
-      component.getProperty('Code');
-      component.getPort('Success').getProperty('Data');
-      component.getPort('Error').getProperty('Data');
+      component.getProperty('Expression');
+      component.getPort('True');
+      component.getPort('False');
       done();
     } catch (e) {
       done(e);
@@ -22,55 +21,45 @@ describe(`Component Tests
 
 describe(`Logic Tests
 `, function () {
-  it('Valid Code property should be intepreted valid', function (done) {
-    let code = {
-      condition: true,
-      if: function () {
-        return null
-      }
-    };
-    component.isCodeValid(code) ?
-      done() :
-      done(new Error('Valid code read invalid'));
-  });
-  it('Valid Code property should be intepreted valid', function (done) {
-    let code = {
-      condition: true,
-      if: function () {
-        return null
-      },
-      else: function () {
-        return null
-      }
-    };
-    component.isCodeValid(code) ?
-      done() :
-      done(new Error('Valid code read invalid'));
-  });
-  it('Invalid Code property should be intepreted invalid', function (done) {
-    let code = {};
-    component.isCodeValid(code) ?
-      done(new Error('Invalid code read valid')) :
-      done();
-  });
-  it('Invalid Code property should be intepreted invalid', function (done) {
-    let code = { condition: false };
-    component.isCodeValid(code) ?
-      done(new Error('Invalid code read valid')) :
-      done();
-  });
-  it('Should increment a', function() {
-    let a = 1;
-    component.getProperty('Code').data = {
-      condition : true,
-      if        : function () { a++; },
-      else      : function () { a--; }
-    };
-    component.getPort('Success').onEmit(function() {
-      assert.equal(a, 2);
+  it(`'Sample Text' should emit False`, function(done) {
+    component.getProperty('Expression').data = 'Sample Text';
+    component.getPort('True').onEmit(function() {
+      done(new Error('True emitted in place of False'));
     });
-    component.getPort('Error').onEmit(function() {
-      assert.equal(a, 0);
+    component.getPort('False').onEmit(function() {
+      done();
+    });
+    component.execute();
+  });
+  it(`'"Sample Text"' should emit True`, function(done) {
+    component.getProperty('Expression').data = '"Sample Text"';
+    component.getPort('True').onEmit(function() {
+      done();
+    });
+    component.getPort('False').onEmit(function() {
+      done(new Error('False emitted in place of True'));
+    });
+    component.execute();
+  });
+  it(`'' should emit False`, function(done) {
+    component = new Component();
+    component.getProperty('Expression').data = '';
+    component.getPort('True').onEmit(function() {
+      done(new Error('True emitted in place of False'));
+    });
+    component.getPort('False').onEmit(function() {
+      done();
+    });
+    component.execute();
+  });
+  it(`[].length should emit False`, function(done) {
+    component = new Component();
+    component.getProperty('Expression').data = '[].length';
+    component.getPort('True').onEmit(function() {
+      done(new Error('True emitted in place of False'));
+    });
+    component.getPort('False').onEmit(function() {
+      done();
     });
     component.execute();
   });
