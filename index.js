@@ -29,7 +29,8 @@ class Component extends Flow.Component {
 
       // expression could throw an error when evaluated
       try {
-        value = eval(this.getProperty('Expression').data);
+        // used Function in place of eval cause it's deemed more efficient
+        value = Function('"use strict";return (' + this.getProperty('Expression').data + ')')();
       } catch(e) {/* ignore, value remains false anyway */}
       
       const port = this.getPort(value ? 'True' : 'False');
