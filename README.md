@@ -34,7 +34,6 @@ component.getPort('False').onEmit(function(){
   // the expression evaluated to false
 });
 
-
 // mandatory to execute the component
 component.execute();
 ```
