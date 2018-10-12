@@ -12,74 +12,29 @@ class Component extends Flow.Component {
     this.name = 'If-else Component';
 
     /*
-    *
-    * {
-    *    condition,
-    *    if: function,
-    *    else: { condition, if, else }
-    * }
-    * 
-    */
-    const code = new Flow.Property('Code', 'object');
-    code.required = true;
-    this.addProperty(code);
+     *
+     * The component evaluates an expression and emits true or false based on the boolean representation of the expression
+     * 
+     */
+    const expression = new Flow.Property('Expression', 'text');
+    expression.required = true;
+    this.addProperty(expression);
 
-    var success = new Flow.Port('Success');
-    var error = new Flow.Port('Error');
-    
-    var response = new Flow.Property('Data', 'Text');
-    success.addProperty(response);
+    this.addPort(new Flow.Port('True'));
+    this.addPort(new Flow.Port('False'));
 
-    var generalError = new Flow.Property('Data', 'object');
-    error.addProperty(generalError);
+    this.attachTask(function () {
 
-    this.addPort(success);
-    this.addPort(error);
+      const value = eval(this.getProperty('Expression').data);
 
-    // we do logic here
-    this.attachTask(function() {
-      let port = this.getPort('Success');
-      try {
-        let result = this._execute(this.getProperty('Code').data);
-        if (!(result instanceof Error))
-          port.getProperty('Data').data = 'Code executed succesfully';
-        else throw result;
-      } catch(err) {
-        // emit error
-        port = this.getPort('Error');
-        port.getProperty('Data').data = err;
-      }
+      const port = this.getPort(value ? 'True' : 'False');
       port.emit();
+
       this.taskComplete();
+
     });
 
   }
-
-  // recurring function to do nested ifs or else-if statements
-  // avoid 'execute' function name which would otherwise overwrite parent execute function
-  _execute(code) {
-    if (!this.isCodeValid(code)) return new Error('Code missing required keys.');
-    if (Boolean(code.condition)) {
-      if (typeof(code.if) === 'function')
-        code.if();
-      else if (Boolean(code.if) && typeof(code.if) === 'object')
-        this._execute(code.if);
-    } else {
-      if (typeof(code.else) === 'function')
-        code.else();
-      else if (Boolean(code.else) && typeof(code.else) === 'object')
-        this._execute(code.else);
-    }
-  }
-
-  isCodeValid(code={}) {
-    let keys = Object.keys(code);
-    return (
-      (keys.includes('condition')) && 
-      (keys.includes('if') || keys.includes('else'))
-    );
-  }
-
 }
 
 module.exports = Component;
