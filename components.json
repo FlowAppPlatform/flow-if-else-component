@@ -1,7 +1,7 @@
 {
   "flow-if-else-component-if-else": {
     "componentId": "flow-if-else-component-if-else",
-    "title": "Execute if else logic",
+    "title": "Evaluate an expression to true or false",
     "imgSrc": "assets/icons/if-else.svg",
     "type": "flow-graph-component",
     "file": "./index.js",
@@ -11,44 +11,14 @@
     },
     "ports": [
       {
-        "id": "Success",
-        "title": "Success",
-        "description": "Code executed succesfully.",
-        "properties": [
-          {
-            "categoryName": "General",
-            "categoryDescription": "Basic settings about this port.",
-            "properties": [
-              {
-                "id": "Data",
-                "name": "Result",
-                "type": "text",
-                "data": null,
-                "options": { "required": true }
-              }
-            ]
-          }
-        ]
+        "id": "True",
+        "title": "True",
+        "description": "Expression evaluated to true."
       },
       {
-        "id": "Error",
-        "title": "Error",
-        "description": "An error occured.",
-        "properties": [
-          {
-            "categoryName": "General",
-            "categoryDescription": "Basic settings about this port.",
-            "properties": [
-              {
-                "id": "Data",
-                "name": "Error",
-                "type": "object",
-                "data": null,
-                "options": { "required": true }
-              }
-            ]
-          }
-        ]
+        "id": "False",
+        "title": "False",
+        "description": "Expression evaluated to false."
       }
     ],
     "properties": [
@@ -57,9 +27,9 @@
         "categoryDescription": "Basic settings about the component.",
         "properties": [
           {
-            "id": "Code",
-            "name": "Code object",
-            "type": "object",
+            "id": "Expression",
+            "name": "Expression to evaluate",
+            "type": "text",
             "data": null,
             "options": { "required": true }
           }
