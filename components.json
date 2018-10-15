@@ -1,0 +1,42 @@
+{
+  "flow-if-else-component-if-else": {
+    "componentId": "flow-if-else-component-if-else",
+    "title": "Evaluate an expression to true or false",
+    "imgSrc": "assets/icons/if-else.svg",
+    "type": "flow-graph-component",
+    "file": "./index.js",
+    "executionPlatform": ["server", "client"],
+    "metadata": {
+      "icon-color": "#7ab260"
+    },
+    "ports": [
+      {
+        "id": "True",
+        "title": "True",
+        "description": "Expression evaluated to true."
+      },
+      {
+        "id": "False",
+        "title": "False",
+        "description": "Expression evaluated to false."
+      }
+    ],
+    "properties": [
+      {
+        "categoryName": "General",
+        "categoryDescription": "Basic settings about the component.",
+        "properties": [
+          {
+            "id": "Expression",
+            "name": "Expression to evaluate",
+            "type": "text",
+            "data": null,
+            "options": { "required": true }
+          }
+        ]
+      }
+    ],
+    "showOnComponentsPanel": true,
+    "isDeletable": true
+  }
+}
