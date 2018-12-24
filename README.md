@@ -40,6 +40,8 @@ component.getPort('False').onEmit(function() {
 // add the component to a graph before executing it
 const Graph = require('flow-platform-sdk').Graph;
 new Graph("graph-1").addComponent(component);
+
+component.execute();
 ```
 
 #### Conclusion
