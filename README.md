@@ -1,10 +1,10 @@
 # Flow if-else component
-The component is designed using Flow SDK to evaluate an expression to true or false.
+The component evaluates an expression to true or false.
 
 *To use the component, in your NodeJS project, get it from npm registry*
 
 ```
-npm install flow-if-else-component --save
+npm i flow-if-else-component --save
 ```
 
 *Use the component as below*
@@ -33,9 +33,13 @@ component.getPort('True').onEmit(function() {
 component.getPort('False').onEmit(function() {
   // the expression evaluated to false
 });
+```
 
-// mandatory to execute the component
-component.execute();
+*Execute the component*
+```javascript
+// add the component to a graph before executing it
+const Graph = require('flow-platform-sdk').Graph;
+new Graph("graph-1").addComponent(component);
 ```
 
 #### Conclusion
