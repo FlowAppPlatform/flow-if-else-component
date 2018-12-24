@@ -29,7 +29,7 @@ class Component extends Flow.Component {
 
       // expression could throw an error when evaluated
       try {
-        // used Function in place of eval cause it's deemed more efficient
+        // used Function in place of eval cause it's more efficient
         value = Function('"use strict";return (' + this.getProperty('Expression').data + ')')();
       } catch(e) {/* ignore, value remains false anyway */}
       
