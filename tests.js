@@ -2,7 +2,10 @@
  * Tests
  */
 
+const Graph = require('flow-platform-sdk').Graph;
 const Component = require('./index');
+
+const graph = new Graph("graph-1");
 let component = new Component();
 
 describe(`Component Tests
@@ -29,6 +32,7 @@ describe(`Logic Tests
     component.getPort('False').onEmit(function() {
       done();
     });
+    graph.addComponent(component);
     component.execute();
   });
   it(`'"Sample Text"' should emit True`, function(done) {
@@ -39,6 +43,7 @@ describe(`Logic Tests
     component.getPort('False').onEmit(function() {
       done(new Error('False emitted in place of True'));
     });
+    graph.addComponent(component);
     component.execute();
   });
   it(`'' should emit False`, function(done) {
@@ -50,6 +55,7 @@ describe(`Logic Tests
     component.getPort('False').onEmit(function() {
       done();
     });
+    graph.addComponent(component);
     component.execute();
   });
   it(`[].length should emit False`, function(done) {
@@ -61,6 +67,7 @@ describe(`Logic Tests
     component.getPort('False').onEmit(function() {
       done();
     });
+    graph.addComponent(component);
     component.execute();
   });
 });
