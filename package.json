@@ -1,6 +1,5 @@
 {
   "name": "flow-if-else-component",
-  "version": "1.0.0",
   "description": "If-else logic using Flow SDK.",
   "main": "index.js",
   "scripts": {
