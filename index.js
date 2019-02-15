@@ -7,8 +7,8 @@ const Flow = require('flow-platform-sdk');
  */
 
 class Component extends Flow.Component {
-  constructor() {
-    super();
+  constructor(id = null) {
+    super(id);
     this.name = 'If-else Component';
 
     /*
