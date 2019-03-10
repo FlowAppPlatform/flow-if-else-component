@@ -1,14 +1,14 @@
 {
   "flow-if-else-component-if-else": {
     "graphComponentId": "flow-if-else-component-if-else",
-    "title": "Evaluate an expression to true or false",
+    "title": "Evaluate expression to true or false",
     "category": "Conditions",
     "imgSrc": "assets/images/icons/if-else.svg",
     "type": "graphComponent",
     "file": "./index.js",
     "executionPlatform": ["server", "client"],
     "metadata": {
-      "icon-color": "#7ab260"
+      "icon-color": "#9535f4"
     },
     "ports": [
       {
