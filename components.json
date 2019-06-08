@@ -8,7 +8,7 @@
     "file": "./index.js",
     "executionPlatform": ["server", "client"],
     "metadata": {
-      "icon-color": "#9535f4"
+      "icon-color": "#843115"
     },
     "ports": [
       {
