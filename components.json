@@ -14,12 +14,14 @@
       {
         "id": "True",
         "title": "True",
-        "description": "Expression evaluated to true"
+        "description": "Expression evaluated to true",
+        "color": "green"
       },
       {
         "id": "False",
         "title": "False",
-        "description": "Expression evaluated to false"
+        "description": "Expression evaluated to false",
+        "color": "red"
       }
     ],
     "properties": [
