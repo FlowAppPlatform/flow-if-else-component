@@ -15,13 +15,13 @@
         "id": "True",
         "title": "True",
         "description": "Expression evaluated to true",
-        "color": "green"
+        "color": "#427BF4"
       },
       {
         "id": "False",
         "title": "False",
         "description": "Expression evaluated to false",
-        "color": "red"
+        "color": "#F4CE42"
       }
     ],
     "properties": [
